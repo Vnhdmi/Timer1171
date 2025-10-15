@@ -44,15 +44,26 @@ if (soundEndflag === "1") {
 ////////////////////////
 stop.addEventListener("click",
   function() {
-    if (soundEndflag === "1") {
-      soundControl("end",);
-      }
-      soundControl("start", "sound/stop1.mp3"); //サウンド
-      soundEndflag = "1";
+
+
+    // if (soundEndflag === "1") {
+    //   soundControl("end",);
+    //   }
+    //   soundControl("start", "sound/stop1.mp3"); //サウンド
+    //   soundEndflag = "1";
+    const checkTimer = Date.now() - startTime ;
+    if(checkTimer>10000 && checkTimer < 11000) {
+      soundControl("start", "sound/stop2.mp3") ;
+    }else{
+      soundControl("start", "sound/stop1.mp3");
+    }
+
     // タイマーを"停止中"状態とする
     setButtonStateStopped();
     clearTimeout(timeoutid); //setTimeout()でセットしたタイマーを解除する際に使用
+    
     stopTime = Date.now() - startTime;
+
   },false
 );
 
